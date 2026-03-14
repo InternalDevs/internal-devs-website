@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
@@ -20,10 +21,14 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">ID</span>
-            </div>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/logo.png"
+              alt="InternalDevs Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-semibold text-lg text-foreground">InternalDevs</span>
           </Link>
 
@@ -42,7 +47,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button asChild>
+            <Button asChild className="bg-gradient-to-r from-[oklch(0.65_0.20_240)] to-[oklch(0.60_0.25_300)] hover:opacity-90 transition-opacity border-0">
               <Link href="#contact">Schedule a Call</Link>
             </Button>
           </div>
@@ -71,7 +76,7 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="mt-2">
+              <Button asChild className="mt-2 bg-gradient-to-r from-[oklch(0.65_0.20_240)] to-[oklch(0.60_0.25_300)] hover:opacity-90 transition-opacity border-0">
                 <Link href="#contact">Schedule a Call</Link>
               </Button>
             </div>
