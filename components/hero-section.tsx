@@ -7,10 +7,21 @@ import { ArrowRight, Sparkles, Zap } from "lucide-react"
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a12]">
-      {/* Animated Background */}
+      {/* Video Background */}
       <div className="absolute inset-0 -z-10">
-        {/* Dark base */}
-        <div className="absolute inset-0 bg-[#0a0a12]" />
+        {/* Video layer */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#0a0a12]/70" />
         
         {/* Animated gradient orbs */}
         <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-[#4FACFE] rounded-full blur-[150px] opacity-20 animate-pulse-glow" />
