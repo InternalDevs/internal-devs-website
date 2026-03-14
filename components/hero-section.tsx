@@ -6,9 +6,9 @@ import { ArrowRight, Sparkles, Zap } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a12]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         {/* Video layer */}
         <video 
           autoPlay 
@@ -21,7 +21,7 @@ export function HeroSection() {
         </video>
         
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#0a0a12]/70" />
+        <div className="absolute inset-0 bg-[#0a0a12]/60" />
         
         {/* Animated gradient orbs */}
         <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-[#4FACFE] rounded-full blur-[150px] opacity-20 animate-pulse-glow" />
@@ -84,7 +84,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32 pt-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32 pt-32">
         <div className="mx-auto max-w-4xl text-center">
           {/* Animated Badge */}
           <div className="opacity-0 animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-medium bg-white/5 text-white/90 rounded-full border border-white/10 backdrop-blur-sm">
@@ -175,7 +175,7 @@ export function HeroSection() {
       </div>
 
       {/* Animated Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in-up animation-delay-800">
+      <div className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in-up animation-delay-800">
         <span className="text-xs text-white/40 uppercase tracking-wider">Scroll to explore</span>
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2">
           <div className="w-1.5 h-3 bg-gradient-to-b from-[#4FACFE] to-[#C56CF0] rounded-full animate-bounce" />
