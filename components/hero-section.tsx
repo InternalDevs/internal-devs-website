@@ -1,10 +1,91 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Zap } from "lucide-react"
+import { ArrowRight, Sparkles, Zap, Target, Users, Building2, Lightbulb, Shield, Clock } from "lucide-react"
+
+const slides = [
+  {
+    id: "main",
+    badge: "AI Consulting & Engineering",
+    title: "Transform Your Data Into",
+    titleHighlight: "Intelligent Systems",
+    description: "We design and implement AI systems that analyze business data and automate critical processes for enterprises worldwide.",
+    stats: [
+      { value: "10+", label: "Years in the Market" },
+      { value: "50+", label: "Solutions Delivered" },
+      { value: "85%", label: "Client Retention" },
+      { value: "24/7", label: "Active Monitoring" },
+    ],
+    cta: { text: "Schedule a Discovery Call", href: "#contact" },
+    secondary: { text: "Explore Solutions", href: "#services" },
+  },
+  {
+    id: "approach",
+    badge: "Our Approach",
+    title: "Methodology That",
+    titleHighlight: "Delivers Results",
+    description: "From discovery to deployment, we follow a proven methodology that ensures your AI projects succeed and scale.",
+    features: [
+      { icon: Target, text: "Discovery & Analysis" },
+      { icon: Lightbulb, text: "Solution Design" },
+      { icon: Zap, text: "Agile Development" },
+      { icon: Shield, text: "Continuous Support" },
+    ],
+    cta: { text: "Learn Our Process", href: "#approach" },
+    secondary: { text: "View Case Studies", href: "#solutions" },
+  },
+  {
+    id: "why-us",
+    badge: "Why Choose Us",
+    title: "Your Trusted Partner in",
+    titleHighlight: "AI Innovation",
+    description: "A decade of experience building AI solutions that transform businesses and deliver measurable ROI.",
+    features: [
+      { icon: Clock, text: "10+ Years Experience" },
+      { icon: Users, text: "Expert Team" },
+      { icon: Shield, text: "Long-term Partnership" },
+      { icon: Zap, text: "Proven Results" },
+    ],
+    cta: { text: "Start Your Project", href: "#contact" },
+    secondary: { text: "Meet the Team", href: "#about" },
+  },
+  {
+    id: "industries",
+    badge: "Industries We Serve",
+    title: "AI Solutions Across",
+    titleHighlight: "Multiple Sectors",
+    description: "From e-commerce to manufacturing, we bring AI-powered transformation to diverse industries.",
+    features: [
+      { icon: Building2, text: "E-commerce & Retail" },
+      { icon: Building2, text: "Manufacturing" },
+      { icon: Building2, text: "Healthcare" },
+      { icon: Building2, text: "Financial Services" },
+    ],
+    cta: { text: "Explore Industries", href: "#industries" },
+    secondary: { text: "View Solutions", href: "#solutions" },
+  },
+]
 
 export function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+        setIsAnimating(false)
+      }, 500)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const slide = slides[currentSlide]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
@@ -37,7 +118,7 @@ export function HeroSection() {
           }}
         />
 
-        {/* Floating particles - deterministic positions to avoid hydration mismatch */}
+        {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[
             { left: 10, top: 15, delay: 0, duration: 6 },
@@ -85,39 +166,71 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32 pt-32">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Animated Badge */}
-          <div className="opacity-0 animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-medium bg-white/5 text-white/90 rounded-full border border-white/10 backdrop-blur-sm">
+        <div className={`mx-auto max-w-4xl text-center transition-all duration-500 ${isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-medium bg-white/5 text-white/90 rounded-full border border-white/10 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-[#C56CF0]" />
             <span className="bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent font-semibold">
-              AI Consulting & Engineering
+              {slide.badge}
             </span>
             <span className="w-2 h-2 bg-gradient-to-r from-[#4FACFE] to-[#C56CF0] rounded-full animate-pulse" />
           </div>
 
-          {/* Animated Headline */}
-          <h1 className="opacity-0 animate-fade-in-up animation-delay-200 text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white text-balance leading-[1.1]">
-            <span className="block">Transform Your Data Into</span>
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white text-balance leading-[1.1]">
+            <span className="block">{slide.title}</span>
             <span className="block mt-2 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent animate-gradient-shift">
-              Intelligent Systems
+              {slide.titleHighlight}
             </span>
           </h1>
 
-          {/* Animated Subheadline */}
-          <p className="opacity-0 animate-fade-in-up animation-delay-400 mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto text-balance leading-relaxed">
-            We design and implement AI systems that analyze business data and automate critical processes for enterprises worldwide.
+          {/* Description */}
+          <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto text-balance leading-relaxed">
+            {slide.description}
           </p>
 
-          {/* Animated CTA Buttons */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-600 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Stats or Features */}
+          <div className="mt-12">
+            {slide.stats ? (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {slide.stats.map((stat) => (
+                  <div key={stat.label} className="text-center group cursor-default">
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                      {stat.value}
+                    </div>
+                    <div className="mt-1 text-sm text-white/50">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : slide.features ? (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {slide.features.map((feature) => (
+                  <div 
+                    key={feature.text}
+                    className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4FACFE]/20 to-[#C56CF0]/20 flex items-center justify-center">
+                      <feature.icon className="w-6 h-6 text-[#7C6DFB]" />
+                    </div>
+                    <span className="text-sm text-white/70 text-center">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               asChild 
               size="lg" 
               className="w-full sm:w-auto text-base px-8 py-6 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-all duration-300 border-0 text-white shadow-lg shadow-[#7C6DFB]/30 hover:shadow-xl hover:shadow-[#7C6DFB]/40 hover:scale-[1.02]"
             >
-              <Link href="#contact">
+              <Link href={slide.cta.href}>
                 <Zap className="mr-2 w-4 h-4" />
-                Schedule a Discovery Call
+                {slide.cta.text}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -127,44 +240,40 @@ export function HeroSection() {
               size="lg" 
               className="w-full sm:w-auto text-base px-8 py-6 bg-transparent border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
             >
-              <Link href="#services">
-                Explore Solutions
+              <Link href={slide.secondary.href}>
+                {slide.secondary.text}
               </Link>
             </Button>
           </div>
 
-          {/* Animated Stats */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-800 mt-16 pt-16 border-t border-white/10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { value: "10+", label: "Years in the Market" },
-                { value: "50+", label: "Solutions Delivered" },
-                { value: "85%", label: "Client Retention" },
-                { value: "24/7", label: "Active Monitoring" },
-              ].map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className="text-center group cursor-default"
-                  style={{ animationDelay: `${0.8 + index * 0.1}s` }}
-                >
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1 text-sm text-white/50">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Slide indicators */}
+          <div className="mt-12 flex items-center justify-center gap-3">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsAnimating(true)
+                  setTimeout(() => {
+                    setCurrentSlide(index)
+                    setIsAnimating(false)
+                  }, 300)
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'w-8 bg-gradient-to-r from-[#4FACFE] to-[#C56CF0]' 
+                    : 'w-2 bg-white/30 hover:bg-white/50'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
 
           {/* Trust indicators */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-800 mt-12 flex flex-wrap items-center justify-center gap-4">
-            {["AI-Powered", "Data-Driven", "Automated", "Scalable"].map((item, index) => (
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            {["AI-Powered", "Data-Driven", "Automated", "Scalable"].map((item) => (
               <div 
                 key={item} 
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white/80 transition-all duration-300 cursor-default text-sm"
-                style={{ animationDelay: `${1 + index * 0.1}s` }}
               >
                 <span className="w-1.5 h-1.5 bg-gradient-to-r from-[#4FACFE] to-[#C56CF0] rounded-full" />
                 {item}
@@ -174,8 +283,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Animated Scroll indicator */}
-      <div className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in-up animation-delay-800">
+      {/* Scroll indicator */}
+      <div className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <span className="text-xs text-white/40 uppercase tracking-wider">Scroll to explore</span>
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2">
           <div className="w-1.5 h-3 bg-gradient-to-b from-[#4FACFE] to-[#C56CF0] rounded-full animate-bounce" />
