@@ -40,7 +40,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="py-28 lg:py-40 bg-[#0a0a12] relative overflow-hidden">
+    <section id="approach" className="py-28 lg:py-40 bg-[#0a0a12] relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#4FACFE]/8 rounded-full blur-[150px]" />
