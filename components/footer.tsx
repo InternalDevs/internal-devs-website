@@ -1,11 +1,10 @@
 import Link from "next/link"
 import { Linkedin, Mail, MapPin } from "lucide-react"
+import { Logo } from "./logo"
 
 const footerLinks = {
   about: [
     { label: "Company", href: "#" },
-    { label: "Team", href: "#" },
-    { label: "Careers", href: "#" },
   ],
   solutions: [
     { label: "AI Data Intelligence", href: "#services" },
@@ -26,11 +25,9 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">ID</span>
-              </div>
-              <span className="font-semibold text-lg text-foreground">InternalDevs</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Logo className="w-10 h-10" />
+              <span className="font-semibold text-lg text-foreground">internal devs</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               AI consulting and engineering firm building intelligent systems that automate business processes and analyze company data.
@@ -39,11 +36,11 @@ export function Footer() {
             {/* Contact info */}
             <div className="mt-6 space-y-3">
               <a 
-                href="mailto:contact@internaldevs.com" 
+                href="mailto:info@internaldevs.com" 
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                contact@internaldevs.com
+                info@internaldevs.com
               </a>
               <a 
                 href="https://linkedin.com/company/internaldevs" 
@@ -56,7 +53,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                Mexico City, Mexico
+                Beaverton, OR 97008
               </div>
             </div>
           </div>
