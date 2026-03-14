@@ -247,3 +247,109 @@
 .animate-spin-slow-reverse {
   animation: spin-slow-reverse 25s linear infinite;
 }
+
+/* Scroll-triggered animations */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Intersection Observer animation classes */
+.scroll-reveal {
+  opacity: 0;
+}
+
+.scroll-reveal.revealed {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+}
+
+.scroll-reveal-left.revealed {
+  animation: reveal-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+}
+
+.scroll-reveal-right.revealed {
+  animation: reveal-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+}
+
+.scroll-reveal-scale.revealed {
+  animation: reveal-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+}
+
+.stagger-children.revealed > *:nth-child(1) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
+.stagger-children.revealed > *:nth-child(2) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+.stagger-children.revealed > *:nth-child(3) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+.stagger-children.revealed > *:nth-child(4) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.stagger-children.revealed > *:nth-child(5) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+.stagger-children.revealed > *:nth-child(6) { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+
+/* Section divider gradient */
+.section-divider {
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4FACFE, #7C6DFB, #C56CF0, transparent);
+}

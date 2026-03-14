@@ -113,10 +113,10 @@ export function HeroSection() {
           <div className="opacity-0 animate-fade-in-up animation-delay-800 mt-16 pt-16 border-t border-white/10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { value: "150+", label: "AI Projects Delivered" },
-                { value: "40M+", label: "Data Points Processed" },
-                { value: "95%", label: "Client Retention" },
-                { value: "24/7", label: "System Uptime" },
+                { value: "10+", label: "Años en el Mercado" },
+                { value: "50+", label: "Soluciones Implementadas" },
+                { value: "85%", label: "Clientes Recurrentes" },
+                { value: "24/7", label: "Monitoreo Activo" },
               ].map((stat, index) => (
                 <div 
                   key={stat.label} 

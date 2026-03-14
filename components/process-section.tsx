@@ -1,4 +1,7 @@
+"use client"
+
 import { Search, PenTool, Rocket, RefreshCw } from "lucide-react"
+import { ScrollReveal } from "./scroll-reveal"
 
 const steps = [
   {
@@ -29,50 +32,54 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="py-24 lg:py-32 bg-background">
+    <section id="process" className="py-24 lg:py-32 bg-background relative section-divider">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-sm font-medium text-accent uppercase tracking-wider">Process</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-            Our Approach
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-            A structured methodology to deliver AI systems that create measurable business impact.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-sm font-medium text-accent uppercase tracking-wider">Process</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+              Our Approach
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+              A structured methodology to deliver AI systems that create measurable business impact.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Process steps */}
         <div className="mt-16 relative">
           {/* Connection line - desktop only */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-border" />
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent" />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {steps.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Step card */}
-                <div className="relative bg-card p-6 rounded-2xl border border-border h-full">
-                  {/* Step number */}
-                  <div className="absolute -top-4 left-6">
-                    <span className="inline-flex items-center justify-center w-8 h-8 text-xs font-bold bg-primary text-primary-foreground rounded-full">
-                      {step.number}
-                    </span>
-                  </div>
+              <ScrollReveal key={index} delay={0.15 * (index + 1)}>
+                <div className="relative h-full">
+                  {/* Step card */}
+                  <div className="relative bg-card p-6 rounded-2xl border border-border h-full hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                    {/* Step number */}
+                    <div className="absolute -top-4 left-6">
+                      <span className="inline-flex items-center justify-center w-8 h-8 text-xs font-bold bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] text-white rounded-full">
+                        {step.number}
+                      </span>
+                    </div>
 
-                  {/* Icon */}
-                  <div className="mt-4 w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
-                    <step.icon className="w-6 h-6 text-foreground" />
-                  </div>
+                    {/* Icon */}
+                    <div className="mt-4 w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                      <step.icon className="w-6 h-6 text-foreground" />
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
+                    {/* Content */}
+                    <h3 className="mt-4 text-lg font-semibold text-foreground">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
