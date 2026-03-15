@@ -2,50 +2,45 @@
 
 import { Code2, LineChart, Settings, Target, CheckCircle2, Award, Users, Zap, ArrowRight } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
-
-const reasons = [
-  {
-    icon: Code2,
-    title: "AI Engineering Expertise",
-    description: "Deep technical knowledge in machine learning, data engineering, and AI system architecture.",
-    gradient: "from-[#4FACFE] to-[#00D9FF]"
-  },
-  {
-    icon: LineChart,
-    title: "Deep Business Data Understanding",
-    description: "We understand how businesses generate and use data to drive strategic decisions.",
-    gradient: "from-[#7C6DFB] to-[#A78BFA]"
-  },
-  {
-    icon: Settings,
-    title: "Custom Systems Built for Each Company",
-    description: "No off-the-shelf solutions. Every system is tailored to your unique requirements.",
-    gradient: "from-[#C56CF0] to-[#F472B6]"
-  },
-  {
-    icon: Target,
-    title: "Focus on Measurable Business Impact",
-    description: "We measure success by the tangible results our AI systems deliver for your business.",
-    gradient: "from-[#4FACFE] to-[#C56CF0]"
-  },
-]
-
-const achievements = [
-  { icon: Award, value: "10+", label: "Years Experience" },
-  { icon: Users, value: "85%", label: "Client Retention" },
-  { icon: Zap, value: "50+", label: "AI Projects" },
-]
-
-const commitments = [
-  "Production-ready AI systems",
-  "Clear documentation & training",
-  "Ongoing support & optimization",
-  "Transparent project communication",
-  "Scalable architecture design",
-  "Data security & compliance",
-]
+import { useLanguage } from "@/lib/i18n"
 
 export function WhySection() {
+  const { t } = useLanguage()
+
+  const reasons = [
+    {
+      icon: Code2,
+      titleKey: "why.experience.title",
+      descriptionKey: "why.experience.description",
+      gradient: "from-[#4FACFE] to-[#00D9FF]"
+    },
+    {
+      icon: LineChart,
+      titleKey: "why.retention.title",
+      descriptionKey: "why.retention.description",
+      gradient: "from-[#7C6DFB] to-[#A78BFA]"
+    },
+    {
+      icon: Settings,
+      titleKey: "why.projects.title",
+      descriptionKey: "why.projects.description",
+      gradient: "from-[#C56CF0] to-[#F472B6]"
+    },
+  ]
+
+  const achievements = [
+    { icon: Award, value: "10+", labelKey: "stats.years" },
+    { icon: Users, value: "85%", labelKey: "stats.retention" },
+    { icon: Zap, value: "50+", labelKey: "stats.solutions" },
+  ]
+
+  const commitments = [
+    "why.commitment.item1",
+    "why.commitment.item2",
+    "why.commitment.item3",
+    "why.commitment.item4",
+  ]
+
   return (
     <section className="py-28 lg:py-40 bg-background relative overflow-hidden">
       {/* Background decorations */}
@@ -60,13 +55,13 @@ export function WhySection() {
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-8">
               <Award className="w-4 h-4 text-[#C56CF0]" />
-              <span className="text-sm font-medium text-foreground">Why Choose Us</span>
+              <span className="text-sm font-medium text-foreground">{t("why.badge")}</span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-              Why <span className="bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent">InternalDevs</span>
+              {t("why.title")}
             </h2>
             <p className="mt-8 text-xl text-muted-foreground leading-relaxed">
-              We combine deep AI engineering expertise with a thorough understanding of business operations to deliver systems that create real value.
+              {t("why.description")}
             </p>
           </div>
         </ScrollReveal>
@@ -83,7 +78,7 @@ export function WhySection() {
                   {item.value}
                 </div>
                 <div className="mt-2 text-sm lg:text-base text-muted-foreground">
-                  {item.label}
+                  {t(item.labelKey)}
                 </div>
               </div>
             ))}
@@ -106,10 +101,10 @@ export function WhySection() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground group-hover:text-[#7C6DFB] transition-colors duration-300">
-                        {reason.title}
+                        {t(reason.titleKey)}
                       </h3>
                       <p className="mt-2 text-muted-foreground leading-relaxed">
-                        {reason.description}
+                        {t(reason.descriptionKey)}
                       </p>
                     </div>
                   </div>
@@ -140,12 +135,9 @@ export function WhySection() {
                   <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 mb-6">
                       <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#4FACFE] to-[#C56CF0]" />
-                      <span className="text-xs font-medium text-white/70">Our Promise</span>
+                      <span className="text-xs font-medium text-white/70">{t("why.commitment.title")}</span>
                     </div>
-                    <h3 className="text-3xl lg:text-4xl font-bold">Our Commitment</h3>
-                    <p className="mt-6 text-lg text-white/60 leading-relaxed">
-                      Every AI system we build is designed with scalability, maintainability, and measurable business outcomes in mind.
-                    </p>
+                    <h3 className="text-3xl lg:text-4xl font-bold">{t("why.commitment.title")}</h3>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -154,7 +146,7 @@ export function WhySection() {
                         <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#4FACFE] to-[#C56CF0] flex items-center justify-center flex-shrink-0">
                           <CheckCircle2 className="w-4 h-4 text-white" />
                         </div>
-                        <span className="text-white/70 group-hover:text-white transition-colors duration-300">{item}</span>
+                        <span className="text-white/70 group-hover:text-white transition-colors duration-300">{t(item)}</span>
                       </div>
                     ))}
                   </div>
@@ -165,7 +157,7 @@ export function WhySection() {
                       href="#contact" 
                       className="inline-flex items-center gap-2 text-white font-semibold hover:text-[#C56CF0] transition-colors duration-300 group"
                     >
-                      Start your AI journey with us
+                      {t("why.commitment.cta")}
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </a>
                   </div>
