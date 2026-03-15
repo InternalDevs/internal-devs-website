@@ -105,6 +105,15 @@ const translations: AllTranslations = {
     "industries.badge": "Industries",
     "industries.title": "AI Solutions Across Sectors",
     "industries.description": "We've delivered transformative AI solutions across multiple industries, understanding the unique challenges each sector faces.",
+    "industries.platform.amazon": "Amazon",
+    "industries.platform.mercadolibre": "Mercado Libre",
+    "industries.platform.shopify": "Shopify",
+    "industries.platform.logistics": "Logistics",
+    "industries.platform.distributors": "Distributors",
+    "industries.platform.warehouse": "Warehouse",
+    "industries.platform.crm": "CRM Systems",
+    "industries.platform.erp": "ERP Systems",
+    "industries.platform.databases": "Databases",
     
     // Process/Approach Section
     "approach.badge": "Methodology",
@@ -249,6 +258,15 @@ const translations: AllTranslations = {
     "industries.badge": "Industrias",
     "industries.title": "Soluciones de IA en Todos los Sectores",
     "industries.description": "Hemos entregado soluciones de IA transformadoras en multiples industrias, entendiendo los desafios unicos que enfrenta cada sector.",
+    "industries.platform.amazon": "Amazon",
+    "industries.platform.mercadolibre": "Mercado Libre",
+    "industries.platform.shopify": "Shopify",
+    "industries.platform.logistics": "Logistica",
+    "industries.platform.distributors": "Distribuidores",
+    "industries.platform.warehouse": "Almacen",
+    "industries.platform.crm": "Sistemas CRM",
+    "industries.platform.erp": "Sistemas ERP",
+    "industries.platform.databases": "Bases de Datos",
     
     // Process/Approach Section
     "approach.badge": "Metodologia",
@@ -393,6 +411,15 @@ const translations: AllTranslations = {
     "industries.badge": "行业",
     "industries.title": "跨行业的AI解决方案",
     "industries.description": "我们在多个行业交付了变革性的AI解决方案，了解每个行业面临的独特挑战。",
+    "industries.platform.amazon": "亚马逊",
+    "industries.platform.mercadolibre": "Mercado Libre",
+    "industries.platform.shopify": "Shopify",
+    "industries.platform.logistics": "物流",
+    "industries.platform.distributors": "经销商",
+    "industries.platform.warehouse": "仓库",
+    "industries.platform.crm": "CRM系统",
+    "industries.platform.erp": "ERP系统",
+    "industries.platform.databases": "数据库",
     
     // Process/Approach Section
     "approach.badge": "方法论",

@@ -11,17 +11,17 @@ export function IndustriesSection() {
     {
       icon: ShoppingCart,
       titleKey: "feature.ecommerce",
-      platforms: ["Amazon", "Mercado Libre", "Shopify"],
+      platformKeys: ["industries.platform.amazon", "industries.platform.mercadolibre", "industries.platform.shopify"],
     },
     {
       icon: Truck,
       titleKey: "feature.manufacturing",
-      platforms: ["Logistics", "Distributors", "Warehouse"],
+      platformKeys: ["industries.platform.logistics", "industries.platform.distributors", "industries.platform.warehouse"],
     },
     {
       icon: Database,
       titleKey: "feature.financial",
-      platforms: ["CRM Systems", "ERP Systems", "Databases"],
+      platformKeys: ["industries.platform.crm", "industries.platform.erp", "industries.platform.databases"],
     },
   ]
 
@@ -58,12 +58,12 @@ export function IndustriesSection() {
 
                 {/* Platforms */}
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {industry.platforms.map((platform, i) => (
+                  {industry.platformKeys.map((platformKey, i) => (
                     <span
                       key={i}
                       className="inline-flex px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
                     >
-                      {platform}
+                      {t(platformKey)}
                     </span>
                   ))}
                 </div>
