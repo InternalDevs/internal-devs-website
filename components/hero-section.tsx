@@ -4,73 +4,75 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles, Zap, Target, Users, Building2, Lightbulb, Shield, Clock } from "lucide-react"
-
-const slides = [
-  {
-    id: "main",
-    badge: "AI Consulting & Engineering",
-    title: "Transform Your Data Into",
-    titleHighlight: "Intelligent Systems",
-    description: "We design and implement AI systems that analyze business data and automate critical processes for enterprises worldwide.",
-    stats: [
-      { value: "10+", label: "Years in the Market" },
-      { value: "50+", label: "Solutions Delivered" },
-      { value: "85%", label: "Client Retention" },
-      { value: "24/7", label: "Active Monitoring" },
-    ],
-    cta: { text: "Schedule a Discovery Call", href: "#contact" },
-    secondary: { text: "Explore Solutions", href: "#services" },
-  },
-  {
-    id: "approach",
-    badge: "Our Approach",
-    title: "Methodology That",
-    titleHighlight: "Delivers Results",
-    description: "From discovery to deployment, we follow a proven methodology that ensures your AI projects succeed and scale.",
-    features: [
-      { icon: Target, text: "Discovery & Analysis" },
-      { icon: Lightbulb, text: "Solution Design" },
-      { icon: Zap, text: "Agile Development" },
-      { icon: Shield, text: "Continuous Support" },
-    ],
-    cta: { text: "Learn Our Process", href: "#approach" },
-    secondary: { text: "View Case Studies", href: "#solutions" },
-  },
-  {
-    id: "why-us",
-    badge: "Why Choose Us",
-    title: "Your Trusted Partner in",
-    titleHighlight: "AI Innovation",
-    description: "A decade of experience building AI solutions that transform businesses and deliver measurable ROI.",
-    features: [
-      { icon: Clock, text: "10+ Years Experience" },
-      { icon: Users, text: "Expert Team" },
-      { icon: Shield, text: "Long-term Partnership" },
-      { icon: Zap, text: "Proven Results" },
-    ],
-    cta: { text: "Start Your Project", href: "#contact" },
-    secondary: { text: "Meet the Team", href: "#about" },
-  },
-  {
-    id: "industries",
-    badge: "Industries We Serve",
-    title: "AI Solutions Across",
-    titleHighlight: "Multiple Sectors",
-    description: "From e-commerce to manufacturing, we bring AI-powered transformation to diverse industries.",
-    features: [
-      { icon: Building2, text: "E-commerce & Retail" },
-      { icon: Building2, text: "Manufacturing" },
-      { icon: Building2, text: "Healthcare" },
-      { icon: Building2, text: "Financial Services" },
-    ],
-    cta: { text: "Explore Industries", href: "#industries" },
-    secondary: { text: "View Solutions", href: "#solutions" },
-  },
-]
+import { useLanguage } from "@/lib/i18n"
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const { t } = useLanguage()
+
+  const slides = [
+    {
+      id: "main",
+      badge: t("hero.slide1.badge"),
+      title: t("hero.slide1.title"),
+      titleHighlight: t("hero.slide1.highlight"),
+      description: t("hero.slide1.description"),
+      stats: [
+        { value: "10+", label: t("stats.years") },
+        { value: "50+", label: t("stats.solutions") },
+        { value: "85%", label: t("stats.retention") },
+        { value: "24/7", label: t("stats.monitoring") },
+      ],
+      cta: { text: t("hero.slide1.cta"), href: "#contact" },
+      secondary: { text: t("hero.slide1.secondary"), href: "#services" },
+    },
+    {
+      id: "approach",
+      badge: t("hero.slide2.badge"),
+      title: t("hero.slide2.title"),
+      titleHighlight: t("hero.slide2.highlight"),
+      description: t("hero.slide2.description"),
+      features: [
+        { icon: Target, text: t("feature.discovery") },
+        { icon: Lightbulb, text: t("feature.design") },
+        { icon: Zap, text: t("feature.development") },
+        { icon: Shield, text: t("feature.support") },
+      ],
+      cta: { text: t("hero.slide2.cta"), href: "#approach" },
+      secondary: { text: t("hero.slide2.secondary"), href: "#solutions" },
+    },
+    {
+      id: "why-us",
+      badge: t("hero.slide3.badge"),
+      title: t("hero.slide3.title"),
+      titleHighlight: t("hero.slide3.highlight"),
+      description: t("hero.slide3.description"),
+      features: [
+        { icon: Clock, text: t("feature.experience") },
+        { icon: Users, text: t("feature.team") },
+        { icon: Shield, text: t("feature.partnership") },
+        { icon: Zap, text: t("feature.results") },
+      ],
+      cta: { text: t("hero.slide3.cta"), href: "#contact" },
+      secondary: { text: t("hero.slide3.secondary"), href: "#about" },
+    },
+    {
+      id: "industries",
+      badge: t("hero.slide4.badge"),
+      title: t("hero.slide4.title"),
+      titleHighlight: t("hero.slide4.highlight"),
+      description: t("hero.slide4.description"),
+      features: [
+        { icon: Building2, text: t("feature.ecommerce") },
+        { icon: Building2, text: t("feature.manufacturing") },
+        { icon: Building2, text: t("feature.healthcare") },
+        { icon: Building2, text: t("feature.financial") },
+      ],
+      cta: { text: t("hero.slide4.cta"), href: "#industries" },
+      secondary: { text: t("hero.slide4.secondary"), href: "#solutions" },
+    },
+  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,7 +84,7 @@ export function HeroSection() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [slides.length])
 
   const slide = slides[currentSlide]
 
@@ -270,13 +272,18 @@ export function HeroSection() {
 
           {/* Trust indicators */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            {["AI-Powered", "Data-Driven", "Automated", "Scalable"].map((item) => (
+            {[
+              { key: "trust.ai", label: t("trust.ai") },
+              { key: "trust.data", label: t("trust.data") },
+              { key: "trust.automated", label: t("trust.automated") },
+              { key: "trust.scalable", label: t("trust.scalable") },
+            ].map((item) => (
               <div 
-                key={item} 
+                key={item.key} 
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white/80 transition-all duration-300 cursor-default text-sm"
               >
                 <span className="w-1.5 h-1.5 bg-gradient-to-r from-[#4FACFE] to-[#C56CF0] rounded-full" />
-                {item}
+                {item.label}
               </div>
             ))}
           </div>
@@ -285,7 +292,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-white/40 uppercase tracking-wider">Scroll to explore</span>
+        <span className="text-xs text-white/40 uppercase tracking-wider">{t("scroll.explore")}</span>
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2">
           <div className="w-1.5 h-3 bg-gradient-to-b from-[#4FACFE] to-[#C56CF0] rounded-full animate-bounce" />
         </div>

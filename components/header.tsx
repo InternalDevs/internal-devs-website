@@ -5,16 +5,19 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { Logo } from "@/components/logo"
-
-const navLinks = [
-  { href: "#services", label: "Solutions" },
-  { href: "#industries", label: "Industries" },
-  { href: "#approach", label: "Our Approach" },
-  { href: "#contact", label: "Contact" },
-]
+import { LanguageSelector } from "@/components/language-selector"
+import { useLanguage } from "@/lib/i18n"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useLanguage()
+
+  const navLinks = [
+    { href: "#services", label: t("nav.solutions") },
+    { href: "#industries", label: t("nav.industries") },
+    { href: "#approach", label: t("nav.approach") },
+    { href: "#contact", label: t("nav.contact") },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12] border-b border-white/10">
@@ -41,21 +44,25 @@ export function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Language Selector & CTA Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSelector />
             <Button asChild className="bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-opacity border-0 text-white">
-              <Link href="#contact">Schedule a Call</Link>
+              <Link href="#contact">{t("nav.cta")}</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <LanguageSelector />
+            <button
+              className="p-2 text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -73,7 +80,7 @@ export function Header() {
                 </Link>
               ))}
               <Button asChild className="mt-2 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-opacity border-0 text-white">
-                <Link href="#contact">Schedule a Call</Link>
+                <Link href="#contact">{t("nav.cta")}</Link>
               </Button>
             </div>
           </div>

@@ -4,8 +4,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
+import { useLanguage } from "@/lib/i18n"
 
 export function CtaSection() {
+  const { t } = useLanguage()
+
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[#0a0a12] text-white relative overflow-hidden">
       {/* Background decorations */}
@@ -18,43 +21,39 @@ export function CtaSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal>
           <div className="mx-auto max-w-3xl text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-sm font-medium bg-white/10 text-white rounded-full border border-white/10">
-              <span className="w-2 h-2 bg-gradient-to-r from-[#4FACFE] to-[#C56CF0] rounded-full animate-pulse" />
-              Ready to Transform Your Business
-            </div>
-
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-balance leading-tight">
-              Start your{" "}
-              <span className="bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] bg-clip-text text-transparent">
-                AI transformation
-              </span>
+              {t("cta.title")}
             </h2>
 
             {/* Description */}
             <p className="mt-6 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Book a discovery call to explore how AI can automate your business processes and unlock the value of your data.
+              {t("cta.description")}
             </p>
 
             {/* CTA Button */}
-            <div className="mt-10">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 asChild 
                 size="lg" 
                 className="text-base px-8 py-6 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 text-white border-0 shadow-lg shadow-[#7C6DFB]/30 hover:shadow-xl hover:shadow-[#7C6DFB]/40 hover:scale-[1.02] transition-all duration-300"
               >
-                <Link href="mailto:contact@internaldevs.com">
-                  Schedule a Discovery Call
+                <Link href="mailto:info@internaldevs.com">
+                  {t("cta.button")}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                className="text-base px-8 py-6 bg-transparent border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+              >
+                <Link href="#services">
+                  {t("cta.secondary")}
+                </Link>
+              </Button>
             </div>
-
-            {/* Trust text */}
-            <p className="mt-8 text-sm text-white/40">
-              Free consultation | No commitment required
-            </p>
           </div>
         </ScrollReveal>
       </div>

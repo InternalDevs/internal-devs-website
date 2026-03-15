@@ -1,24 +1,29 @@
+"use client"
+
 import Link from "next/link"
 import { Linkedin, Mail, MapPin } from "lucide-react"
 import { Logo } from "./logo"
-
-const footerLinks = {
-  about: [
-    { label: "Company", href: "#" },
-  ],
-  solutions: [
-    { label: "AI Data Intelligence", href: "#services" },
-    { label: "AI Workflow Automation", href: "#services" },
-    { label: "Predictive Systems", href: "#services" },
-  ],
-  industries: [
-    { label: "Ecommerce", href: "#industries" },
-    { label: "Supply Chain", href: "#industries" },
-    { label: "Data-Driven Companies", href: "#industries" },
-  ],
-}
+import { useLanguage } from "@/lib/i18n"
 
 export function Footer() {
+  const { t } = useLanguage()
+
+  const footerLinks = {
+    about: [
+      { label: t("footer.company"), href: "#" },
+    ],
+    solutions: [
+      { label: t("services.intelligence.title"), href: "#services" },
+      { label: t("services.automation.title"), href: "#services" },
+      { label: t("services.integration.title"), href: "#services" },
+    ],
+    industries: [
+      { label: t("feature.ecommerce"), href: "#industries" },
+      { label: t("feature.manufacturing"), href: "#industries" },
+      { label: t("feature.financial"), href: "#industries" },
+    ],
+  }
+
   return (
     <footer className="bg-background border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20">
@@ -30,7 +35,7 @@ export function Footer() {
               <span className="font-semibold text-lg text-foreground">internal devs</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              AI consulting and engineering firm building intelligent systems that automate business processes and analyze company data.
+              {t("footer.description")}
             </p>
 
             {/* Contact info */}
@@ -60,7 +65,7 @@ export function Footer() {
 
           {/* About links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">About</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t("footer.about")}</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.about.map((link) => (
                 <li key={link.label}>
@@ -77,7 +82,7 @@ export function Footer() {
 
           {/* Solutions links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Solutions</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t("footer.services")}</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.label}>
@@ -94,7 +99,7 @@ export function Footer() {
 
           {/* Industries links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Industries</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t("nav.industries")}</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.industries.map((link) => (
                 <li key={link.label}>
@@ -113,7 +118,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} InternalDevs. All rights reserved.
+            © {new Date().getFullYear()} InternalDevs. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
