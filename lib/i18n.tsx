@@ -1,12 +1,14 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, ReactNode, useMemo } from "react"
 
 export type Language = "en" | "es" | "zh"
 
 type TranslationKey = string
 type Translations = Record<TranslationKey, string>
 type AllTranslations = Record<Language, Translations>
+
+const DEFAULT_LANGUAGE: Language = "en"
 
 const translations: AllTranslations = {
   en: {
@@ -452,9 +454,11 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const saved = localStorage.getItem("language") as Language
     if (saved && ["en", "es", "zh"].includes(saved)) {
       setLanguage(saved)
@@ -466,12 +470,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("language", lang)
   }
 
-  const t = (key: string): string => {
+  const t = useMemo(() => (key: string): string => {
     return translations[language][key] || key
-  }
+  }, [language])
+
+  const value = useMemo(() => ({ 
+    language, 
+    setLanguage: handleSetLanguage, 
+    t 
+  }), [language, t])
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )

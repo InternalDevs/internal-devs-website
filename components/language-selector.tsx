@@ -9,9 +9,30 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Globe } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Show a placeholder during SSR to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <Button 
+        variant="ghost" 
+        size="sm" 
+        className="gap-2 text-white/70 hover:text-white hover:bg-white/10"
+      >
+        <Globe className="w-4 h-4" />
+        <span className="hidden sm:inline">English</span>
+        <span className="sm:hidden">EN</span>
+      </Button>
+    )
+  }
 
   return (
     <DropdownMenu>
@@ -39,7 +60,7 @@ export function LanguageSelector() {
             }`}
           >
             <span className="mr-2 text-lg">
-              {lang === "en" ? "🇺🇸" : lang === "es" ? "🇪🇸" : "🇨🇳"}
+              {lang === "en" ? "US" : lang === "es" ? "ES" : "CN"}
             </span>
             {languageNames[lang]}
           </DropdownMenuItem>
