@@ -38,7 +38,7 @@ export function CtaSection() {
                 size="lg" 
                 className="text-base px-8 py-6 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 text-white border-0 shadow-lg shadow-[#7C6DFB]/30 hover:shadow-xl hover:shadow-[#7C6DFB]/40 hover:scale-[1.02] transition-all duration-300"
               >
-                <Link href="mailto:info@internaldevs.com">
+                <Link href="https://calendly.com/carlosid/30min" target="_blank" rel="noopener noreferrer">
                   {t("cta.button")}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>

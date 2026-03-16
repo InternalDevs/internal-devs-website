@@ -66,30 +66,26 @@ function AlertDialogContent({
 function AlertDialogHeader({
   className,
   ...props
-}: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="alert-dialog-header"
-      className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
-      {...props}
-    />
-  )
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return React.createElement('div', {
+    'data-slot': 'alert-dialog-header',
+    className: cn('flex flex-col gap-2 text-center sm:text-left', className),
+    ...props,
+  })
 }
 
 function AlertDialogFooter({
   className,
   ...props
-}: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="alert-dialog-footer"
-      className={cn(
-        'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',
-        className,
-      )}
-      {...props}
-    />
-  )
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return React.createElement('div', {
+    'data-slot': 'alert-dialog-footer',
+    className: cn(
+      'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',
+      className,
+    ),
+    ...props,
+  })
 }
 
 function AlertDialogTitle({

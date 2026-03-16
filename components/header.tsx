@@ -48,7 +48,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSelector />
             <Button asChild className="bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-opacity border-0 text-white">
-              <Link href="#contact">{t("nav.cta")}</Link>
+              <Link href="https://calendly.com/carlosid/30min" target="_blank" rel="noopener noreferrer">{t("nav.cta")}</Link>
             </Button>
           </div>
 
@@ -80,7 +80,7 @@ export function Header() {
                 </Link>
               ))}
               <Button asChild className="mt-2 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-opacity border-0 text-white">
-                <Link href="#contact">{t("nav.cta")}</Link>
+                <Link href="https://calendly.com/carlosid/30min" target="_blank" rel="noopener noreferrer">{t("nav.cta")}</Link>
               </Button>
             </div>
           </div>

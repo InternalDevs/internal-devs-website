@@ -24,7 +24,7 @@ export function HeroSection() {
         { value: "85%", label: t("stats.retention") },
         { value: "24/7", label: t("stats.monitoring") },
       ],
-      cta: { text: t("hero.slide1.cta"), href: "#contact" },
+      cta: { text: t("hero.slide1.cta"), href: "https://calendly.com/carlosid/30min" },
       secondary: { text: t("hero.slide1.secondary"), href: "#services" },
     },
     {
@@ -230,7 +230,7 @@ export function HeroSection() {
               size="lg" 
               className="w-full sm:w-auto text-base px-8 py-6 bg-gradient-to-r from-[#4FACFE] via-[#7C6DFB] to-[#C56CF0] hover:opacity-90 transition-all duration-300 border-0 text-white shadow-lg shadow-[#7C6DFB]/30 hover:shadow-xl hover:shadow-[#7C6DFB]/40 hover:scale-[1.02]"
             >
-              <Link href={slide.cta.href}>
+              <Link href={slide.cta.href} {...(slide.cta.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                 <Zap className="mr-2 w-4 h-4" />
                 {slide.cta.text}
                 <ArrowRight className="ml-2 w-4 h-4" />
